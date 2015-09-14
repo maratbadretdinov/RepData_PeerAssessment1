@@ -45,7 +45,7 @@ plot(as.numeric(names(avap)), avap, type="l", main="Average daily activity patte
 ```{r}
 maxns <- names(which.max(avap))
 ```
-5-minute interval containing the maximum number of steps is **`r maxns`**
+5-minute interval containing the maximum number of steps in average is **`r maxns`**
 
 ## Imputing missing values
 
