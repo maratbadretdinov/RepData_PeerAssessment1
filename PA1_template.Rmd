@@ -26,8 +26,8 @@ hist(tns_day,breaks=8, col = "blue", border = "pink", xlab="Total number of step
 mn1 <- mean(tns_day, na.rm=T)
 md1 <- median(tns_day, na.rm=T)
 ```
-Mean of the total number of steps taken per day: `r format(mn1,nsmall=4)`   
-Median of the total number of steps taken per day: `r md1`   
+Mean of the total number of steps taken per day: **`r format(mn1,nsmall=4)`**   
+Median of the total number of steps taken per day: **`r md1`**   
 
 ## What is the average daily activity pattern?
 Vector of means of number of steps per 5-minute interval
@@ -41,7 +41,11 @@ plot(as.numeric(names(avap)), avap, type="l", main="Average daily activity patte
      xlab="5 minute interval", ylab="average number of steps taken")
 ```
 
-5-minute interval containing the maximum number of steps is `r names(which.max(avap))`
+
+```{r}
+maxns <- names(which.max(avap))
+```
+5-minute interval containing the maximum number of steps is **`r maxns`**
 
 ## Imputing missing values
 
@@ -49,7 +53,7 @@ plot(as.numeric(names(avap)), avap, type="l", main="Average daily activity patte
 mvn <- summary(data[,1])["NA's"]
 ```
 
-Total number of missing values is `r mvn`
+Total number of missing values is **`r mvn`**
 
 Creating a new dataset and replacing NAs by mean values from 'avap' vector created in previous step
 ```{r}
@@ -69,8 +73,8 @@ md2 <- median(tns_day2)
 ```
 
 After imputing missing values we have the following values:    
-- Mean of the total number of steps taken per day is `r format(mn2,nsmall=4)`   
-- Median of the total number of steps taken per day is `r format(md2,nsmall=4)`   
+- Mean of the total number of steps taken per day is **`r format(mn2,nsmall=4)`**   
+- Median of the total number of steps taken per day is **`r format(md2,nsmall=4)`**   
 
 We see that estimates of the total daily number of steps are higher than before imputing missing values
 
@@ -85,5 +89,5 @@ g <- g + labs(x="Interval", y="Number of steps")
 g + labs(title = "Weekend / weekday average number of steps") + labs(colour="Week day type")
 ```
 
-We see on weekdays the most active period falls to the time between 8 and 9 AM with much less active period for the rest of the day.   
+We see that on weekdays the most active period falls to the time between 8 and 9 AM with much less active period for the rest of the day.   
 On weekends activity is distributed more evenly across all day.   

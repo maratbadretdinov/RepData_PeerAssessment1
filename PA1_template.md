@@ -28,8 +28,8 @@ hist(tns_day,breaks=8, col = "blue", border = "pink", xlab="Total number of step
 mn1 <- mean(tns_day, na.rm=T)
 md1 <- median(tns_day, na.rm=T)
 ```
-Mean of the total number of steps taken per day: 9354.2295   
-Median of the total number of steps taken per day: 10395   
+Mean of the total number of steps taken per day: **9354.2295**   
+Median of the total number of steps taken per day: **10395**   
 
 ## What is the average daily activity pattern?
 Vector of means of number of steps per 5-minute interval
@@ -47,7 +47,12 @@ plot(as.numeric(names(avap)), avap, type="l", main="Average daily activity patte
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
 
-5-minute interval containing the maximum number of steps is 835
+
+
+```r
+maxns <- names(which.max(avap))
+```
+5-minute interval containing the maximum number of steps is **835**
 
 ## Imputing missing values
 
@@ -56,7 +61,7 @@ plot(as.numeric(names(avap)), avap, type="l", main="Average daily activity patte
 mvn <- summary(data[,1])["NA's"]
 ```
 
-Total number of missing values is 2304
+Total number of missing values is **2304**
 
 Creating a new dataset and replacing NAs by mean values from 'avap' vector created in previous step
 
@@ -73,7 +78,7 @@ hist(tns_day2,breaks=8, col = "blue", border = "pink", xlab="Total number of ste
      main="Total number of steps taken per day after imputing missing values")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-8-1.png) 
 
 ```r
 mn2 <- mean(tns_day2)
@@ -81,8 +86,8 @@ md2 <- median(tns_day2)
 ```
 
 After imputing missing values we have the following values:    
-- Mean of the total number of steps taken per day is 10766.1887   
-- Median of the total number of steps taken per day is 10766.1887   
+- Mean of the total number of steps taken per day is **10766.1887**   
+- Median of the total number of steps taken per day is **10766.1887**   
 
 We see that estimates of the total daily number of steps are higher than before imputing missing values
 
@@ -98,7 +103,7 @@ g <- g + labs(x="Interval", y="Number of steps")
 g + labs(title = "Weekend / weekday average number of steps") + labs(colour="Week day type")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-8-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
 
-We see on weekdays the most active period falls to the time between 8 and 9 AM with much less active period for the rest of day.   
+We see that on weekdays the most active period falls to the time between 8 and 9 AM with much less active period for the rest of the day.   
 On weekends activity is distributed more evenly across all day.   
